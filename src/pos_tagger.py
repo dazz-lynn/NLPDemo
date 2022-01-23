@@ -53,5 +53,5 @@ def app():
     elif pkg_text == "NLTK":
         token_list = nltk.pos_tag(nltk.word_tokenize(text))
         for pair in token_list:
-            st.write(pair.translate(str.maketrans('', '', string.punctuation)))
+            st.write(pair[0], pair[1])
 
