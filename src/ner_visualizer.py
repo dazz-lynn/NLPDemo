@@ -1,17 +1,13 @@
 import spacy_streamlit
 import streamlit as st
+import nltk
 from .utils import load_data_pandas, load_model, load_data_json
 import random
 
 
 def app():
     model_name = "en_core_web_sm"
-    # filepath = "src/reviewSamples20.json"
-    # df = load_data_pandas(filepath)
-    # reviews = df["text"].to_list()
-    packages = ["spaCy", "NLP"]
-    # random.seed(420)
-    # random.shuffle(reviews)
+    packages = ["spaCy", "NLTK"]
 
     nlp = load_model(model_name)
 
@@ -19,17 +15,19 @@ def app():
     st.subheader("What type of NLP package would like to explore?")
     pkg_text = st.selectbox("NLP package:", packages)
     st.markdown("---")
-
     st.subheader("Enter the text you'd like to analyze.")
     text = st.text_input('Enter text')
 
-    doc = spacy_streamlit.process_text(model_name, text)
-    # review_data = load_data_json(filepath, pkg_text)
-    # st.markdown("JSON object:")
-    # st.json(review_data)
+    if pkg_text == "spaCy":
+        doc = spacy_streamlit.process_text(model_name, text)
 
-    spacy_streamlit.visualize_ner(
-        doc,
-        labels=nlp.get_pipe("ner").labels,
-        title="Named Entity Recognition Visualizer",
-    )
+        spacy_streamlit.visualize_ner(
+            doc,
+            labels=nlp.get_pipe("ner").labels,
+        )
+    elif pkg_text == "NLTK":
+        for sent in ntlk.sent_tokenize(text):
+            for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
+                if hasattr(chunk, 'label'):
+                    st.write(chunk.label(), ' '. join(c[0] for c in chunk))
+
