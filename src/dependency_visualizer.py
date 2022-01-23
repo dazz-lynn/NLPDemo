@@ -6,11 +6,11 @@ import random
 
 def app():
     model_name = "en_core_web_sm"
-    filepath = "src/reviewSelected100.json"
-    df = load_data_pandas(filepath)
-    reviews = list(sorted(df["text"].to_list(), key=len))[20:40]
-    random.seed(420)
-    random.shuffle(reviews)
+    # filepath = "src/reviewSelected100.json"
+    # df = load_data_pandas(filepath)
+    # reviews = list(sorted(df["text"].to_list(), key=len))[20:40]
+    # random.seed(420)
+    # random.shuffle(reviews)
 
     st.title("Token Analysis")
     st.markdown(
