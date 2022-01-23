@@ -9,12 +9,12 @@ def app():
 As part of the High Fidelity prototyping phase, 
 a Streamlit application is used to partially explore and visualise the final website.
 
-The features we prototyped were:
+The features prototyped were:
+* Tokenization
 * POS tagging
 * Dependency Parsing
-* Tokenization
 * Named Entity Recognition
 
-The focus of this prototype was on showcasing two different NLP packages, NLTK and  
+The focus of this prototype was on showcasing two different NLP packages, NLTK and spaCy
 """
     )
