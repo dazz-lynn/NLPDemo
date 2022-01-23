@@ -6,22 +6,18 @@ import random
 
 def app():
     model_name = "en_core_web_sm"
-    # filepath = "src/reviewSelected100.json"
-    # df = load_data_pandas(filepath)
-    # reviews = list(sorted(df["text"].to_list(), key=len))[20:40]
-    # random.seed(420)
-    # random.shuffle(reviews)
+    packages = ["spaCy", "NLTK"]
 
-    st.title("Token Analysis")
-    st.markdown(
-        "20 reviews are used as samples for token analysis and dependency parsing."
-    )
-    review_text = st.selectbox("Choose a review from the following dropdown:", reviews)
+    st.title("Dependency Parsing")
+    st.subheader("What type of NLP package would like to explore?")
+    pkg_text = st.selectbox("NLP package:", packages)
     st.markdown("---")
-    doc = spacy_streamlit.process_text(model_name, review_text)
-    review_data = load_data_json(filepath, review_text)
-    st.markdown("JSON object:")
-    st.json(review_data)
+    st.subheader("Enter the text you'd like to analyze.")
+    text = st.text_input('Enter text')
+    doc = spacy_streamlit.process_text(model_name, text)
 
-    spacy_streamlit.visualize_tokens(doc, title="Token Analysis")
-    spacy_streamlit.visualize_parser(doc, title="Dependency Visualizer")
+    if pkg_text == "spaCy":
+        spacy_streamlit.visualize_parser(doc, title="Dependency Visualizer")
+    elif pkg_text == "NLTK":
+        st.write('Placeholder')
+
