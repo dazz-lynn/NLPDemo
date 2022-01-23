@@ -1,5 +1,6 @@
 import streamlit as st
 from src import ner_visualizer, dependency_visualizer, home_page, pos_tagger, token_visualizer
+st.set_page_config(layout= "centered")
 
 pages = {
     "Introduction": home_page,

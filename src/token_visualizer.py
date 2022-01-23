@@ -22,11 +22,13 @@ def app():
     nlp = spacy.load(model_name)
 
     col1, col2 = st.columns(2)
+    con1 = st.container
+    con2 = st.container
     with col1:
-        with st.container:
+        with con1:
             st.subheader("What NLP package would you like to explore?")
     with col2:
-        with st.container:
+        with con2:
             side_ = st.checkbox("Display side by side")
     pkg_text = st.selectbox("NLP package:", packages)
     st.markdown("---")
