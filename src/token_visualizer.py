@@ -25,11 +25,9 @@ def app():
     con1 = st.container
     con2 = st.container
     with col1:
-        with con1:
-            st.subheader("What NLP package would you like to explore?")
+        st.subheader("What NLP package would you like to explore?")
     with col2:
-        with con2:
-            side_ = st.checkbox("Display side by side")
+        side_ = st.checkbox("Display side by side")
     pkg_text = st.selectbox("NLP package:", packages)
     st.markdown("---")
     st.subheader("Enter the text you'd like to analyze.")
