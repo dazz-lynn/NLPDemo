@@ -2,7 +2,6 @@ import spacy_streamlit
 import streamlit as st
 import spacy
 import nltk
-from nltk.tokenize import sent_tokenize
 from .utils import load_data_pandas, load_model, load_data_json
 
 def app():
@@ -26,4 +25,4 @@ def app():
             attrs=["text", "pos_", "dep_", "ent_type_"]
         )
     elif pkg_text == "NLTK":
-        st.write('Placeholder')
+        st.write(nltk.tokenize.word_tokenize(text))
