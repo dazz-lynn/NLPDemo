@@ -4,20 +4,17 @@ import streamlit as st
 def app():
     st.markdown(
         """
-# NLP Assignment 1
+# Natural Language Processing Demo
 
-Hello profs! Please use the **navigation in the sidebar** (on the left of the page) to see our 
-**Basic Data Analysis** and implementations of **Named Entity Recognition**, **Token Analysis**
-and **Dependency Visualization**.
+As part of the High Fidelity prototyping phase, 
+a Streamlit application is used to partially explore and visualise the final website.
 
-We hope you enjoy!
+The features we prototyped were:
+* POS tagging
+* Dependency Parsing
+* Tokenization
+* Named Entity Recognition
 
-Team Members:
-
-* Callista Rossary Chang
-* Goh Shing Ling
-* Lynn Htet Aung
-* Phoe Chuan Bin
-* Timothy Low Jing Haen
+The focus of this prototype was on showcasing two different NLP packages, NLTK and  
 """
     )
