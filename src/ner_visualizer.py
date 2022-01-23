@@ -16,10 +16,14 @@ def app():
     nlp = load_model(model_name)
 
     st.title("Named Entity Recognition")
-    pkg_text = st.selectbox("Choose an NLP package from the following options:", packages)
+    st.subheader("What type of NLP package would like to explore?")
+    pkg_text = st.selectbox("NLP package:", packages)
     st.markdown("---")
 
-    doc = spacy_streamlit.process_text(model_name, pkg_text)
+    st.subheader("Enter the text you'd like to analyze.")
+    text = st.text_input('Enter text')
+
+    doc = spacy_streamlit.process_text(model_name, text)
     # review_data = load_data_json(filepath, pkg_text)
     # st.markdown("JSON object:")
     # st.json(review_data)
