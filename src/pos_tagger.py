@@ -26,7 +26,7 @@ def app():
         if text != "":
             doc = nlp(text)
             for token in doc:
-                st.write(token, token.pos_)
+                st.markdown(token, token.pos_)
 
             # USEFUL FOR DISPLAYING USING RAW HTML
             # if "parser" in nlp.pipe_names:
