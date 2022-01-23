@@ -6,6 +6,8 @@ import webbrowser
 from .utils import load_data_pandas, load_model, load_data_json
 
 def app():
+    st.set_page_config(layout="wide")
+
     st.title("Tokenization")
     with st.expander("See explanation"):
         add_desc_ = st.markdown('Tokenization is a way of separating a piece of text into smaller units called '
@@ -21,7 +23,7 @@ def app():
     packages = ["spaCy", "NLTK"]
     nlp = spacy.load(model_name)
 
-    col1, col2 = st.columns([2, 1])
+    col1, col2 = st.columns(2)
     col1.subheader("What NLP package would you like to explore?")
     col2.checkbox("Display side by side")
     pkg_text = st.selectbox("NLP package:", packages)
