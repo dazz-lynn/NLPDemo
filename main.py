@@ -7,6 +7,7 @@ pages = {
     "Named Entity Recognition": ner_visualizer,
     "Token Analysis & Dependency Visualizer": dependency_visualizer,
 }
+#test
 
 st.sidebar.title("Navigation")
 page_selection = st.sidebar.radio("Go to:", list(pages.keys()))
