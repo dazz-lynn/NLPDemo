@@ -27,6 +27,7 @@ def app():
             labels=nlp.get_pipe("ner").labels,
         )
     elif pkg_text == "NLTK":
+        nltk.download('punkt')
         for sent in nltk.sent_tokenize(text):
             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
                 if hasattr(chunk, 'label'):
