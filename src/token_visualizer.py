@@ -6,8 +6,6 @@ import webbrowser
 from .utils import load_data_pandas, load_model, load_data_json
 
 def app():
-    st.set_page_config(layout="wide")
-
     st.title("Tokenization")
     with st.expander("See explanation"):
         add_desc_ = st.markdown('Tokenization is a way of separating a piece of text into smaller units called '
