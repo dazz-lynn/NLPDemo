@@ -6,7 +6,7 @@ from .utils import load_data_pandas, load_model, load_data_json
 import random
 
 
-def app(ntlk=nltk):
+def app():
     model_name = "en_core_web_sm"
     packages = ["spaCy", "NLTK"]
 
@@ -27,7 +27,7 @@ def app(ntlk=nltk):
             labels=nlp.get_pipe("ner").labels,
         )
     elif pkg_text == "NLTK":
-        for sent in sent_tokenize(text):
+        for sent in nltk.sent_tokenize(text):
             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
                 if hasattr(chunk, 'label'):
                     st.write(chunk.label(), ' '. join(c[0] for c in chunk))
