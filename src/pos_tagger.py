@@ -50,5 +50,7 @@ def app():
             #         st.markdown(f"> {sent.text}")
             #     st.write(HTML_WRAPPER.format(html), unsafe_allow_html=True)
     elif pkg_text == "NLTK":
-        st.markdown(nltk.pos_tag(nltk.word_tokenize(text)))
+        token_list = nltk.pos_tag(nltk.word_tokenize(text))
+        for pair in token_list:
+            st.write(pair)
 
