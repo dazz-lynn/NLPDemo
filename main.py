@@ -4,8 +4,8 @@ from src import ner_visualizer, dependency_visualizer, home_page, pos_tagger
 pages = {
     "Introduction": home_page,
     "POS Tagging": pos_tagger,
+    "Dependency Parsing": dependency_visualizer,
     "Named Entity Recognition": ner_visualizer,
-    "Token Analysis & Dependency Visualizer": dependency_visualizer,
 }
 
 st.sidebar.title("Navigation")

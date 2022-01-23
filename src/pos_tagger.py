@@ -1,5 +1,6 @@
 import spacy_streamlit
 import streamlit as st
+import nltk
 import spacy
 from spacy import displacy
 from .utils import load_data_pandas, load_data_json
@@ -26,28 +27,29 @@ def app():
             doc = nlp(text)
             for token in doc:
                 st.write(token, token.pos_)
-            if "parser" in nlp.pipe_names:
-                st.subheader("Dependency Parse & Part-of-speech tags")
-                st.sidebar.header("Dependency Parse")
-                split_sents = st.sidebar.checkbox("Split sentences", value=True)
-                collapse_punct = st.sidebar.checkbox("Collapse punctuation", value=True)
-                collapse_phrases = st.sidebar.checkbox("Collapse phrases")
-                compact = st.sidebar.checkbox("Compact mode")
-                options = {
-                    "collapse_punct": collapse_punct,
-                    "collapse_phrases": collapse_phrases,
-                    "compact": compact,
-                }
-            docs = [span.as_doc() for span in doc.sents] if split_sents else [doc]
-            for sent in docs:
-                html = displacy.render(sent, options=options)
-                # Double newlines seem to mess with the rendering
-                html = html.replace("\n\n", "\n")
-                if split_sents and len(docs) > 1:
-                    st.markdown(f"> {sent.text}")
-                st.write(HTML_WRAPPER.format(html), unsafe_allow_html=True)
-        # doc = spacy_streamlit.process_text(model_name, text)
-        # spacy_streamlit.visualize_tokens(doc, title="Token Analysis")
+
+            # USEFUL FOR DISPLAYING USING RAW HTML
+            # if "parser" in nlp.pipe_names:
+            #     st.subheader("Dependency Parse & Part-of-speech tags")
+            #     st.sidebar.header("Dependency Parse")
+            #     split_sents = st.sidebar.checkbox("Split sentences", value=True)
+            #     collapse_punct = st.sidebar.checkbox("Collapse punctuation", value=True)
+            #     collapse_phrases = st.sidebar.checkbox("Collapse phrases")
+            #     compact = st.sidebar.checkbox("Compact mode")
+            #     options = {
+            #         "collapse_punct": collapse_punct,
+            #         "collapse_phrases": collapse_phrases,
+            #         "compact": compact,
+            #     }
+            # docs = [span.as_doc() for span in doc.sents] if split_sents else [doc]
+            # for sent in docs:
+            #     html = displacy.render(sent, options=options)
+            #     # Double newlines seem to mess with the rendering
+            #     html = html.replace("\n\n", "\n")
+            #     if split_sents and len(docs) > 1:
+            #         st.markdown(f"> {sent.text}")
+            #     st.write(HTML_WRAPPER.format(html), unsafe_allow_html=True)
     elif pkg_text == "NLTK":
-        st.write('Placeholder')
+        for token in nltk.word_tokenize(text):
+            st.write(nltk.pos_tag(token))
 
