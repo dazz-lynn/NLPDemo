@@ -35,6 +35,6 @@ def app():
             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
                 if hasattr(chunk, 'label'):
                     if chunk.label() == 'GPE':
-                        st.write(st.text('GEOPOLITICAL'), ' '.join(c[0] for c in chunk))
+                        st.write('GEOPOLITICAL', ' '.join(c[0] for c in chunk))
                     st.write(chunk.label(), ' '. join(c[0] for c in chunk))
 
