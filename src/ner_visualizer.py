@@ -1,6 +1,7 @@
 import spacy_streamlit
 import streamlit as st
-import nltk as nltk
+import nltk
+from nltk.tokenize import sent_tokenize
 from .utils import load_data_pandas, load_model, load_data_json
 import random
 
@@ -26,7 +27,7 @@ def app(ntlk=nltk):
             labels=nlp.get_pipe("ner").labels,
         )
     elif pkg_text == "NLTK":
-        for sent in ntlk.sent_tokenize(text):
+        for sent in sent_tokenize(text):
             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
                 if hasattr(chunk, 'label'):
                     st.write(chunk.label(), ' '. join(c[0] for c in chunk))
