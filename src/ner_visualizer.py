@@ -36,5 +36,6 @@ def app():
                 if hasattr(chunk, 'label'):
                     if chunk.label() == 'GPE':
                         st.write('GEOPOLITICAL', ' '.join(c[0] for c in chunk))
-                    st.write(chunk.label(), ' '. join(c[0] for c in chunk))
+                    else:
+                        st.write(chunk.label(), ' '. join(c[0] for c in chunk))
 
