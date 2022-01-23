@@ -29,6 +29,7 @@ def app():
     elif pkg_text == "NLTK":
         nltk.download('punkt')
         nltk.download('averaged_perceptron_tagger')
+        nltk.download('maxent_ne_chunker')
         for sent in nltk.sent_tokenize(text):
             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
                 if hasattr(chunk, 'label'):
