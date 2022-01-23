@@ -1,11 +1,11 @@
 import spacy_streamlit
 import streamlit as st
-import nltk
+import nltk as nltk
 from .utils import load_data_pandas, load_model, load_data_json
 import random
 
 
-def app():
+def app(ntlk=nltk):
     model_name = "en_core_web_sm"
     packages = ["spaCy", "NLTK"]
 
