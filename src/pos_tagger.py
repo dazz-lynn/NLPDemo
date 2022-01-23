@@ -1,5 +1,6 @@
 import spacy_streamlit
 import streamlit as st
+import string
 import nltk
 import spacy
 from spacy import displacy
@@ -26,7 +27,7 @@ def app():
         if text != "":
             doc = nlp(text)
             for token in doc:
-                st.markdown(token, token.pos_)
+                st.write(token, token.pos_)
 
             # USEFUL FOR DISPLAYING USING RAW HTML
             # if "parser" in nlp.pipe_names:
@@ -52,5 +53,5 @@ def app():
     elif pkg_text == "NLTK":
         token_list = nltk.pos_tag(nltk.word_tokenize(text))
         for pair in token_list:
-            st.write(pair)
+            st.write(pair.translate(str.maketrans('', '', string.punctuation)))
 
